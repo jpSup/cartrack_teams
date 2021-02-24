@@ -1,32 +1,47 @@
+import React, { useState } from "react"
 
+import UserCard from "./UserCard"
 import { useUserData } from "../Queries/UserData"
+import UserFilterBar from "./UserFilterBar"
+
+
+
+import styles from "./UserList.module.css"
 
 
 const UsersList = () => {
 
-    const { status, data, error } = useUserData();
+    const [dataFilter, setDataFilter] = useState({type: "all", term: ""})
+
+    const { status, data, error } = useUserData( {dataFilter} );
 
     return (
 
-        <div>
-            <h1>Users</h1>
-            <div>
+        <>
+            <h1 className={ `${styles.usertitle}` }>Users</h1>
+            <UserFilterBar doSearch = {(term, type) => setDataFilter({
+                    ...dataFilter,
+                    type: type,
+                    term: term
+            })} />
+            <div className={styles.userlist_container}>
+                
                 {status === "loading" ? (
                     "Loading..."
                 ) : status === "error" ? (
                     <span>Error: {error.message}</span>
-                ) : (
-                            <>
-                                <div>
-                                    {data.map((user) => (
-                                        <h2 key={user.id}>{user.name}</h2>                                        
-                                    ))}
-                                </div>                                
-                            </>
-                        )}
+                ) :  ( 
+                        <>
+                            {data.map((user) => (
+                                <UserCard user={user} key={user.id} />                                                                       
+                            ))}
+                        </>
+                    )                                      
+                        
+                }
             </div>
-        </div>
-
+        </>
+        
     )
 
 }

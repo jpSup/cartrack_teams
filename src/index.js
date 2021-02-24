@@ -15,7 +15,9 @@ const App = () => {
   return ( 
     <React.StrictMode>
       <Header />
-        { routeResult }
+        <main>
+          { routeResult }
+        </main>
       <Footer />      
     </React.StrictMode>    
   )
@@ -24,3 +26,5 @@ const App = () => {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
+//handy color changes 
+//[].forEach.call($$("*"),function(a){a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16)})
