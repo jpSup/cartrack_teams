@@ -6,8 +6,6 @@ import styles from "./mapview.module.css"
 
 const Mapview = ( {mapCoords} ) => {
 
-    console.log('mapview'+mapCoords)
-
     const { status, data, error } = useMapData( mapCoords );
 
     return (
