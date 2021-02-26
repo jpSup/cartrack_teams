@@ -2,26 +2,13 @@
 
 import {useMapData} from "../Queries/useMapData"
 
-import {  
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import styles from "./mapview.module.css"
 
-const queryClient = new QueryClient();
+const Mapview = ( {mapCoords} ) => {
 
-const Mapview = ( {coords} ) => (
+    console.log('mapview'+mapCoords)
 
-    <QueryClientProvider client={queryClient}>
-        <Mapdata coords={coords} />
-        <ReactQueryDevtools initialIsOpen />
-    </QueryClientProvider>
-)
-
-
-
-const Mapdata = ({coords}) => {
-    const { status, data, error } = useMapData({coords});
+    const { status, data, error } = useMapData( mapCoords );
 
     return (
         <>
@@ -33,9 +20,7 @@ const Mapdata = ({coords}) => {
             ) : (
                 <>
                 
-                <div>
-                    {data}
-                </div>
+                    <img className={styles.mapimage} src={data} alt="user location"  />
                 
                 </>
             )}

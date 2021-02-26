@@ -4,8 +4,6 @@ import UserCard from "./UserCard"
 import { useUserData } from "../Queries/UserData"
 import UserFilterBar from "./UserFilterBar"
 
-
-
 import styles from "./UserList.module.css"
 
 
@@ -32,9 +30,16 @@ const UsersList = () => {
                     <span>Error: {error.message}</span>
                 ) :  ( 
                         <>
-                            {data.map((user) => (
-                                <UserCard user={user} key={user.id} />                                                                       
-                            ))}
+                            {
+                            
+                            data.length > 0 ?                             
+                                data.map((user) => (
+                                    <UserCard user={user} key={user.id} />                                                                       
+                                ))
+                                :
+                                <div>There are no results</div>
+                            
+                            }
                         </>
                     )                                      
                         

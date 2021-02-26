@@ -1,12 +1,17 @@
 .userCard{
     display: flex;
-    border: 1px solid black;
+    box-shadow: 4px 4px 13px 0px grey;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     width:640px;
     margin-bottom: 60px;
+    overflow-y: hidden;
+    position: relative;
+    transition: transform 0.5s;
 }
+
+
 
 .userImage_box{
     width: 40%;
@@ -18,6 +23,8 @@
     padding-bottom: 56.52%;
     position: relative;
 }
+
+
 
 .userImage_box .user_name{
     font-size: 1.8rem;
@@ -44,15 +51,22 @@
 .userDetail_box .userDetail_top{
     display: flex;
     flex-direction: column;
-
 }
 
 .userDetail_top .user_row {  
     padding:0 15px;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    padding-bottom:15px;
+    padding-top:15px;
 }
+
+/*
+.userDetail_top .user_row:nth-child(odd) {  
+    background-color: rgba(244, 119, 53, 0.2);
+}
+
+*/
 
 .userDetail_top .user_row h3 {  
     margin-right: 20px;
@@ -74,11 +88,11 @@
 }
 
 .user_row .user_address{
-
-}
-
-.user_row .user_map{
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .user_row h6{
@@ -99,10 +113,11 @@
     background-color: rgb(19, 35, 55);
     height: 65px;
     align-items: center;
+    z-index: 2;
 }
 
 
-.user_detail_bottom a{
+.user_detail_bottom a, .user_detail_bottom button{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -110,9 +125,10 @@
     flex-grow:1;  
 }
 
-.user_detail_bottom a:hover{
-    background-color: #3f4e60;
+.user_detail_bottom button:focus{
+    outline: none;
 }
+
 
 .user_detail_bottom a.user_email{
     background-image: url(../../assets/email.svg);
@@ -124,9 +140,60 @@
     
 }
 
-.user_detail_bottom a.user_website{
+.user_detail_bottom button.user_website{
     background-image: url(../../assets/website.svg);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
+
+.user_detail_bottom a:hover, .user_detail_bottom button:hover{
+    background-color: #3f4e60;
+}
+
+
+.user_hidden_world{
+    position: absolute;
+    border-top-right-radius: 20px;
+    height: 331px;
+    background-color: white;
+    width: 384px;
+    transform: translateY(100%);
+    transition: transform 0.5s;
+    overflow: hidden;
+}
+
+.mapviewer_address{
+    position: absolute;
+    z-index: 2;
+    left:10px;
+    top:218px;
+}
+
+.mapviewer_address h3{
+   margin-top:5px;
+   margin-bottom:5px;
+}
+
+.mapviewer{
+    
+}
+
+.showHiddenWorld{
+    transform: translateY(0%);
+    transition: transform 0.5s;
+}
+
+
+.mapClose{
+    color:black;
+    font-weight: 400;
+    z-index: 3;
+    position: absolute;
+    top:10px;
+    right:10px
+}
+
 
 @media (max-width: 640px){
     .userCard{
@@ -148,5 +215,10 @@
 
     .user_detail_bottom{
         border-bottom-left-radius: 20px;
+    }
+
+    .user_hidden_world{    
+        width: 100%;    
+        border-top-right-radius: 0px;   
     }
 }

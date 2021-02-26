@@ -1,0 +1,9 @@
+
+.mapimage{
+    width: 100%;
+    transform: translateY(-15%);
+}
+
+@media (max-width: 640px){
+    
+}

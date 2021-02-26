@@ -9,9 +9,18 @@ const UserFilterBar = ( { doSearch } ) => {
         <div className={styles.filterbar_container}>
             
             <div className={styles.filterBar_items}>
-                <input type="text" value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
-                <button onClick={() => doSearch(searchValue, 'email')}>filterBy email</button>
-                <button onClick={() => doSearch(searchValue, 'name')}>filter by name</button>
+                <input placeholder="Search" type="text" value={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
+                <div className={styles.filter_buttons}>
+                    <button onClick={() => doSearch(searchValue, 'email')}>Filter By Email</button>
+                    <button onClick={() => doSearch(searchValue, 'name')}>Filter By Name</button>
+                    <button onClick={() => {
+                            doSearch(searchValue, 'all')
+                            setSearchValue('')
+                        }
+                    }>
+                        Show All
+                        </button>
+                </div>
             </div>
 
         </div>

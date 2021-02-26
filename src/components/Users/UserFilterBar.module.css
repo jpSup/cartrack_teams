@@ -1,10 +1,47 @@
 .filterbar_container{
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .filterBar_items{
-    
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    max-width: 640px;
 }
+
+.filterBar_items input{   
+    margin-bottom: 15px;       
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    padding: 15px;
+    font-size: 2rem;
+}
+
+.filter_buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.filter_buttons button{  
+    font-size: 0.9em;
+    font-weight: bold;   
+    border: 0px;
+    border-radius: 0.3em;
+    color: white;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    min-width: 150px;
+    background: #f47735;
+}
+
+
+.filter_buttons button:nth-child(2){    
+    
+    margin-right:15px;  
+    margin-left:15px; 
+}
+
